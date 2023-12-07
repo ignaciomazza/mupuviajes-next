@@ -93,8 +93,8 @@ function Team() {
                         width={100}
                         height={100}
                         alt={`Cateoria ${item.categoria}`}
-                        quality={100}
-                        priority={true}
+                        quality={50}
+                        priority={false}
                         className='object-cover object-center rounded-full'
                     />
                     <div className='flex flex-col justify-center items-center'>

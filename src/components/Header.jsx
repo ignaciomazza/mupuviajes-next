@@ -3,7 +3,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 function Header() {
     return (
-        <header className='flex justify-center items-center h-[90vh] w-full bg-center bg-cover bg-[url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")]'>
+        <header className='flex justify-center items-center h-[90vh] w-full bg-center bg-cover bg-[url("https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")]'>
             <div className='h-full w-full flex justify-center items-center bg-gradient-to-t from-[#000000] via-[#00000000] to-[#00000000]'>
                 <div className='flex flex-col justify-center items-center gap-2'>
                     <h1 className='text-white font-black text-8xl tracking-widest'>MUPU VIAJES</h1>
