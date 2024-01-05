@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
 .swiper-button-prev {
     padding: 30px;
     color: #ffffff !important;
@@ -27,4 +36,3 @@
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 100%;
 }
-

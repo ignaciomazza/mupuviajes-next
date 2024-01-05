@@ -40,10 +40,7 @@ const Categories = () => {
             return res;
         }
         const task = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(getData())
-
-            }, 0);
+            resolve(getData())
         })
         task
             .then((resultado) => {
@@ -56,15 +53,15 @@ const Categories = () => {
     return (
         <div className='flex justify-center items-center bg-black h-[350px]'>
             <div className='flex justify-center items-center bg-black w-[10%] h-full z-40'>
-                <button onClick={() => RestarPosition()}><ArrowLeftIcon className='h-10 text-white mx-1' /></button>
+                <button onClick={() => RestarPosition()}><ArrowLeftIcon className='h-8 text-white mx-1' /></button>
             </div>
             <div className='flex justify-center items-center gap-1 w-[80%]'>
                 {cat.map((item, index) => (
-                    <CardCategory key={index} categoria={item.categoria} nombre={item.nombre} img={item.img} />
+                    (item.pos == position || item.pos == (position + 1) || item.pos == (position + 2) || item.pos == (position - 1) || item.pos == (position - 2)) && <CardCategory key={index} categoria={item.categoria} nombre={item.nombre} img={item.img} />
                 ))}
             </div>
             <div className='flex justify-center items-center bg-black w-[10%] h-full z-40'>
-                <button onClick={() => SumarPosition()}><ArrowRightIcon className='h-10 text-white mx-1' /></button>
+                <button onClick={() => SumarPosition()}><ArrowRightIcon className='h-8 text-white mx-1' /></button>
             </div>
         </div>
     )

@@ -1,11 +1,10 @@
 "use client"
 import React, { useState, useEffect } from 'react'
+import CardCategory from "./CardCategory.jsx";
 import db from '../services'
 import { collection, getDocs } from 'firebase/firestore';
-import Link from "next/link";
-import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, EffectCoverflow, Pagination } from 'swiper/modules'
+import { Navigation, EffectCoverflow } from 'swiper/modules'
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
@@ -48,12 +47,23 @@ const Categories = () => {
 
     return (
         <div className='flex flex-col justify-center bg-black'>
-            <div className='flex flex-wrap justify-evenly items-center w-full'>
+            <div className='flex flex-wrap justify-evenly items-center w-full '>
                 <Swiper
                     effect={'coverflow'}
                     grabCursor={true}
                     centeredSlides={true}
-                    slidesPerView={6}
+                    slidesPerView={2}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 3,
+                        },
+                        768: {
+                            slidesPerView: 4,
+                        },
+                        1024: {
+                            slidesPerView: 5,
+                        },
+                    }}
                     coverflowEffect={{
                         rotate: 0,
                         stretch: 0,
@@ -72,22 +82,7 @@ const Categories = () => {
                 >
                     {cat.map((item, index) => (
                         <SwiperSlide key={index.toString()}>
-                            <Link key={index.toString()} href={`/category/${item.categoria}/destination/all/tidy/mayor`}>
-                                <div className='h-[350px] w-[310px]'>
-                                    <Image
-                                        src={item.img}
-                                        width={350}
-                                        height={200}
-                                        alt={`Cateoria ${item.categoria}`}
-                                        quality={40}
-                                        priority={true}
-                                        className='h-full w-full object-cover object-center rounded-md'
-                                    />
-                                    <div className='flex justify-center items-center h-[50%] w-full relative bottom-[50%]  rounded-md'>
-                                        <h5 className='text-center text-white font-bold'>{item.nombre.toUpperCase()}</h5>
-                                    </div>
-                                </div>
-                            </Link>
+                            <CardCategory key={index} categoria={item.categoria} nombre={item.nombre} img={item.img} />
                         </SwiperSlide>
                     ))}
                     <div className="slider-controler">
@@ -101,7 +96,7 @@ const Categories = () => {
                     </div>
                 </Swiper>
             </div>
-        </div>
+        </div >
     )
 }
 

@@ -1,39 +1,46 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import Instagram from './../../public/Instagram.png'
 import Facebook from './../../public/Facebook.png'
 
 function Media() {
+
+    const media = [
+        {
+            name: "Instagram",
+            img: Instagram,
+            followers: "+5K",
+            url: "https://www.instagram.com/mupuviajesturismo/?hl=es"
+        },
+        {
+            name: "Facebook",
+            img: Facebook,
+            followers: "+7K",
+            url: "https://www.facebook.com/mupu.viajes.3/?locale=es_LA"
+        }
+    ]
+
     return (
-        <div className='h-full w-[80%] flex justify-between items-center'>
-            <div className='grid grid-cols-2 gap-2 p-4 w-[45%] border border-[#ffffff20] bg-[#ffffff28] rounded-md backdrop-blur-xl'>
-                <h2 className='flex justify-center items-center text-2xl col-span-1'>Instagram</h2>
-                <div className='flex justify-center items-center col-span-1 row-span-2'>
-                    <Image
-                        src={Instagram}
-                        width={100}
-                        height={100}
-                        quality={100}
-                        alt='Instagram'
-                        className='hover:cursor-pointer'
-                    />
+        <div className='basis-2/6 flex flex-col gap-10 items-center'>
+            {media.map((item, index) => (
+                <div key={index} className='grid grid-cols-2 gap-2 w-full p-4'>
+                    <h2 className='flex justify-center items-center text-2xl col-span-1'>{item.name}</h2>
+                    <div className='flex justify-center items-center col-span-1 row-span-2 hover:scale-105 transition-transform'>
+                        <Link href={item.url} target='blank'>
+                            <Image
+                                src={item.img}
+                                width={100}
+                                height={100}
+                                quality={100}
+                                alt='Instagram'
+                                className='hover:cursor-pointer'
+                            />
+                        </Link>
+                    </div>
+                    <p className='flex justify-center items-center text-[50px] font-extrabold col-span-1'>{item.followers}</p>
                 </div>
-                <p className='flex justify-center items-center text-[50px] font-extrabold col-span-1'>+5K</p>
-            </div>
-            <div className='grid grid-cols-2 gap-2 p-4 w-[45%] border border-[#ffffff20] bg-[#ffffff28] rounded-md backdrop-blur-xl'>
-                <h2 className='flex justify-center items-center text-2xl col-span-1'>Facebook</h2>
-                <div className='flex justify-center items-center col-span-1 row-span-2'>
-                    <Image
-                        src={Facebook}
-                        width={100}
-                        height={100}
-                        quality={100}
-                        alt='Facebook'
-                        className='hover:cursor-pointer'
-                    />
-                </div>
-                <p className='flex justify-center items-center text-[50px] font-extrabold col-span-1'>+7K</p>
-            </div>
+            ))}
         </div>
     )
 }
